@@ -1,20 +1,22 @@
 <script>
-  import { set_attributes } from "svelte/internal";
+  import { projectStore } from "$lib/stores/projectStore";
 
-  export let data;
+  // console.log($projectStore);
+  // export let data;
+  // console.log($data);
 
-  const projects = data.projects.data;
+  // const projects = data.projects.data;
 </script>
 
 <h1>portfolio</h1>
-{#each projects as project (project.id)}
-  <a href={`/portfolio/${project.attributes.slug}`}>
-    <h2>{project.attributes.title}</h2>
+{#each $projectStore as project (project.id)}
+  <a href={`/portfolio/${project.slug}`}>
+    <h2>{project.title}</h2>
     <ul>
-      {#if project.attributes.isDesigner}
+      {#if project.isDesigner}
         <li>designer</li>
       {/if}
-      {#if project.attributes.isDeveloper}
+      {#if project.isDeveloper}
         <li>developer</li>
       {/if}
     </ul>

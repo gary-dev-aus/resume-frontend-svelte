@@ -1,7 +1,7 @@
-import { STRAPI_API_ENDPOINT as apiUrl } from "$env/static/private";
+import { PUBLIC_STRAPI_ENDPOINT as urlBase } from "$env/static/public";
 
 export async function load({ fetch }) {
-  const response = await fetch(`${apiUrl}/homepage`);
+  const response = await fetch(`${urlBase}/api/homepage`);
   const homepage = await response.json();
 
   return {
